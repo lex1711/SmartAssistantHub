@@ -1,5 +1,6 @@
 ﻿using Mango.Services.StrategyApi.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,11 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(
     option =>
-        option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")
-        //x => x.MigrationsAssembly("WebApplication1.Migrations")
-        )
-        );
+        option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+        x => x.MigrationsAssembly("Mango.Services.StrategyApi")
+        ));
 
+
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
