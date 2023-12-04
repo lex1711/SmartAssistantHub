@@ -1,11 +1,11 @@
-﻿using System;
+﻿ using System;
 namespace Mango.Services.StrategyApi.Models.Dto
 {
 	public class StrategyDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public required string Name { get; set; }
+        public required string Description { get; set; }
         public List<string>? Categories { get; set; } // Список категорий
         public string? ComplexityLevel { get; set; } // Уровень сложности
         public string? RecommendedFor { get; set; } // Рекомендуемые типы задач
@@ -15,9 +15,9 @@ namespace Mango.Services.StrategyApi.Models.Dto
         //public DateTime UpdatedAt { get; set; }
         public List<string>? Tags { get; set; } // Теги для поиска и фильтрации
 
-        public StrategyDto()
-		{
-		}
-	}
+        //public StrategyDto()
+        //{
+        //}
+    }
 }
 

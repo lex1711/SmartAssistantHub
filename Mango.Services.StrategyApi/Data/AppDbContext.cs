@@ -1,4 +1,5 @@
 ﻿using System;
+using Mango.Services.StrategyApi.Models;
 using Mango.Services.StrategyAPI;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +12,7 @@ namespace Mango.Services.StrategyApi.Data
 			
 		}
 
-		public DbSet<Models.Strategy> Strategies { get; set; }
+		public DbSet<Strategy> Strategies { get; set; }
 	}
 }
 

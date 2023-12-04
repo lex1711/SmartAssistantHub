@@ -10,9 +10,9 @@ namespace Mango.Services.StrategyApi.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public required string Name { get; set; }
         [Required]
-        public string Description { get; set; }
+        public required string Description { get; set; }
         public List<string>? Categories { get; set; } // Список категорий
         public string? ComplexityLevel { get; set; } // Уровень сложности
         public string? RecommendedFor { get; set; } // Рекомендуемые типы задач
@@ -22,7 +22,10 @@ namespace Mango.Services.StrategyApi.Models
         public DateTime UpdatedAt { get; set; }
         public List<string>? Tags { get; set; } // Теги для поиска и фильтрации
 
-        
+        /*
+ This is a multi-line
+ comment in C#
+
         public enum TechniqueCategory
            {       
         TimeManagement,
@@ -32,6 +35,8 @@ namespace Mango.Services.StrategyApi.Models
         Others
         // Другие категории по необходимости
         }
+        */
+
     }
 }
 
