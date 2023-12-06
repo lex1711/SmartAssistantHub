@@ -22,6 +22,8 @@ namespace Mango.Services.StrategyApi.Models
         public DateTime UpdatedAt { get; set; }
         public List<string>? Tags { get; set; } // Теги для поиска и фильтрации
 
+        public Strategy() { }
+
         /*
  This is a multi-line
  comment in C#
