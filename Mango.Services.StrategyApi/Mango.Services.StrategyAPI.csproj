@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <InvariantGlobalization>true</InvariantGlobalization>
+    <InvariantGlobalization>false</InvariantGlobalization>
     <UserSecretsId>8871397a-3a2c-4c50-8c34-e22c8f647f6e</UserSecretsId>
   </PropertyGroup>
 
@@ -28,12 +28,10 @@
     <None Remove="Models\" />
     <None Remove="Models\Dto\" />
     <None Remove="Data\" />
-    <None Remove="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Models\Dto\" />
     <Folder Include="Data\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
 </Project>
