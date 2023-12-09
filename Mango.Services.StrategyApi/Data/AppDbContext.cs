@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Mango.Services.StrategyApi.Data
 {
-	public class AppDbContext: DbContext
+    public class AppDbContext : DbContext
     {
-		public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
-		{
-			
-		}
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
 
-		public DbSet<Strategy> Strategies { get; set; }
+        }
+
+        public DbSet<Strategy> Strategies { get; set; }
 
 
 
@@ -67,7 +67,62 @@ namespace Mango.Services.StrategyApi.Data
                 Tags = new List<string> { "Self-improvement", "Motivation" }
             });
 
+            modelBuilder.Entity<Strategy>().HasData(new Strategy
+            {
+                Id = 4,
+                Name = "Pomodoro Technique",
+                Description = "Техника управления временем, разбивающая работу на короткие интервалы с короткими перерывами.",
+                Categories = new List<string> { "TimeManagement", "Productivity" },
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow,
+                Resources = new List<string> { "https://francescocirillo.com/pages/pomodoro-technique", "https://en.wikipedia.org/wiki/Pomodoro_Technique" },
+                RecommendedFor = new List<string> { "Focus Improvement", "Task Management" },
+                ComplexityLevel = 1,
+                IsAIEnhanced = false,
+                Tags = new List<string> { "Efficiency", "Time Management" }
+            });
+            modelBuilder.Entity<Strategy>().HasData(new Strategy
+            {
+                Id = 5,
+                Name = "Kanban Method",
+                Description = "Гибкий метод управления задачами с использованием досок Канбан для визуализации рабочего процесса.",
+                Categories = new List<string> { "ProjectManagement", "Agile" },
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow,
+                Resources = new List<string> { "https://kanbanize.com/kanban-resources/getting-started/what-is-kanban", "https://en.wikipedia.org/wiki/Kanban" },
+                RecommendedFor = new List<string> { "Workflow Management", "Team Collaboration" },
+                ComplexityLevel = 2,
+                IsAIEnhanced = false,
+                Tags = new List<string> { "Agile", "Teamwork", "Productivity" }
+            });
+            modelBuilder.Entity<Strategy>().HasData(new Strategy
+            {
+                Id = 6,
+                Name = "Mind Mapping",
+                Description = "Техника визуального мышления и планирования, использующая диаграммы для отображения взаимосвязей между различными идеями или задачами.",
+                Categories = new List<string> { "Brainstorming", "Creativity" },
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow,
+                Resources = new List<string> { "https://www.mindmapping.com/", "https://en.wikipedia.org/wiki/Mind_map" },
+                RecommendedFor = new List<string> { "Idea Generation", "Problem Solving" },
+                ComplexityLevel = 2,
+                IsAIEnhanced = false,
+                Tags = new List<string> { "Creativity", "Planning", "Organization" }
+            });
+            modelBuilder.Entity<Strategy>().HasData(new Strategy
+            {
+                Id = 7,
+                Name = "Eisenhower Box",
+                Description = "Метод управления задачами, основанный на разделении задач на категории по важности и срочности.",
+                Categories = new List<string> { "TimeManagement", "DecisionMaking" },
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow,
+                Resources = new List<string> { "https://www.eisenhower.me/eisenhower-matrix/", "https://en.wikipedia.org/wiki/Time_management#The_Eisenhower_Method" },
+                RecommendedFor = new List<string> { "Prioritization", "Efficiency" },
+                ComplexityLevel = 1,
+                IsAIEnhanced = false,
+                Tags = new List<string> { "Productivity", "Focus", "Organization" }
+            });
         }
     }
 }
-
