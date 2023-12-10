@@ -47,7 +47,21 @@ namespace Mango.Services.StrategyApi.Controllers
             try
             {
                 Models.Strategy obj = _db.Strategies.First(u=>u.Id== id);
-                _response.Resault = obj;
+                StrategyDto strategyDto = new StrategyDto()
+                {
+                    Id = obj.Id,
+                    Description = obj.Description,
+                    Name = obj.Name,
+                    RecommendedFor = obj.RecommendedFor,
+                    Categories = obj.Categories,
+                    ComplexityLevel = obj.ComplexityLevel,
+                    CreatedAt = obj.CreatedAt,
+                    IsAIEnhanced = obj.IsAIEnhanced,
+                    Resources = obj.Resources,
+                    Tags = obj.Tags,
+                    UpdatedAt = obj.UpdatedAt
+                };
+                _response.Resault = strategyDto;
             }
             catch (Exception ex)
             {
