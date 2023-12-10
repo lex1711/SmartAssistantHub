@@ -1,4 +1,6 @@
 ﻿using System.Reflection;
+using AutoMapper;
+using Mango.Services.StrategyApi;
 using Mango.Services.StrategyApi.Data;
 using Mango.Services.StrategyApi.Models;
 using Microsoft.Data.SqlClient;
@@ -16,6 +18,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration["ConnectionString:DefaultConnection"]);
 });
+
+IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
+builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers();
 

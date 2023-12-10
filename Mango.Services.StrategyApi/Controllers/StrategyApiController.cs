@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Mango.Services.StrategyApi.Models.Dto;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,10 +16,12 @@ namespace Mango.Services.StrategyApi.Controllers
     {
         private readonly Data.AppDbContext _db;
         private ResponseDto _response;
+        private IMapper _mapper;
 
-        public StrategyApiController(Data.AppDbContext db)
+        public StrategyApiController(Data.AppDbContext db, IMapper mapper)
         {
             _db = db;
+            _mapper = mapper;
             _response = new ResponseDto();
         }
 
@@ -28,7 +32,7 @@ namespace Mango.Services.StrategyApi.Controllers
             try
             {
                 IEnumerable<Models.Strategy> objList = _db.Strategies.ToList();
-                _response.Resault = objList;
+                _response.Resault = _mapper.Map<IEnumerable<StrategyDto>>(objList);
             }
             catch (Exception ex)
             {
@@ -47,21 +51,7 @@ namespace Mango.Services.StrategyApi.Controllers
             try
             {
                 Models.Strategy obj = _db.Strategies.First(u=>u.Id== id);
-                StrategyDto strategyDto = new StrategyDto()
-                {
-                    Id = obj.Id,
-                    Description = obj.Description,
-                    Name = obj.Name,
-                    RecommendedFor = obj.RecommendedFor,
-                    Categories = obj.Categories,
-                    ComplexityLevel = obj.ComplexityLevel,
-                    CreatedAt = obj.CreatedAt,
-                    IsAIEnhanced = obj.IsAIEnhanced,
-                    Resources = obj.Resources,
-                    Tags = obj.Tags,
-                    UpdatedAt = obj.UpdatedAt
-                };
-                _response.Resault = strategyDto;
+                _response.Resault = _mapper.Map<StrategyDto>(obj);
             }
             catch (Exception ex)
             {
