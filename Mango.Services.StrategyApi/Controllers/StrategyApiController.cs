@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Mango.Services.StrategyApi.Models;
 using Mango.Services.StrategyApi.Models.Dto;
 using Microsoft.AspNetCore.Mvc;
 
@@ -63,14 +64,14 @@ namespace Mango.Services.StrategyApi.Controllers
         }
 
 
-        // GET api/values/5
+        // GET api/values/GetByName/
         [HttpGet]
         [Route("GetByName/{name}")] 
         public ResponseDto GetByName(string name)
         {
             try
             {
-                Models.Strategy obj = _db.Strategies.FirstOrDefault(u => u.Name.ToLower() == name.ToLower());
+                Models.Strategy obj = _db.Strategies.First(u => u.Name.ToLower() == name.ToLower());
                 _response.Resault = _mapper.Map<StrategyDto>(obj);
             }
             catch (Exception ex)
@@ -83,23 +84,65 @@ namespace Mango.Services.StrategyApi.Controllers
         }
 
 
-
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public ResponseDto Post([FromBody]StrategyDto strategyDto)
         {
+            try
+            {
+                Strategy obj = _mapper.Map<Strategy>(strategyDto);
+                _db.Strategies.Add(obj);
+                _db.SaveChanges();
+
+                _response.Resault = _mapper.Map<StrategyDto>(obj);
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+            }
+
+            return _response;
         }
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public ResponseDto Put([FromBody] StrategyDto strategyDto)
         {
+            try
+            {
+                Strategy obj = _mapper.Map<Strategy>(strategyDto);
+                _db.Strategies.Update(obj);
+                _db.SaveChanges();
+
+                _response.Resault = _mapper.Map<StrategyDto>(obj);
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+            }
+
+            return _response;
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public ResponseDto Delete(int id)
         {
+            try
+            {
+                Strategy obj =_db.Strategies.First(u => u.Id == id);
+                _db.Strategies.Remove(obj);
+                _db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+            }
+
+            return _response;
         }
     }
 }
