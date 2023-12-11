@@ -62,6 +62,28 @@ namespace Mango.Services.StrategyApi.Controllers
             return _response;
         }
 
+
+        // GET api/values/5
+        [HttpGet]
+        [Route("GetByName/{name}")] 
+        public ResponseDto GetByName(string name)
+        {
+            try
+            {
+                Models.Strategy obj = _db.Strategies.FirstOrDefault(u => u.Name.ToLower() == name.ToLower());
+                _response.Resault = _mapper.Map<StrategyDto>(obj);
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.Message;
+            }
+
+            return _response;
+        }
+
+
+
         // POST api/values
         [HttpPost]
         public void Post([FromBody]string value)
