@@ -1,7 +1,7 @@
 ﻿ using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Mango.Services.StrategyApi.Models.Dto
+namespace Mango.Web.Models
 {
 	public class StrategyDto
     {
@@ -19,4 +19,3 @@ namespace Mango.Services.StrategyApi.Models.Dto
 
     }
 }
-
