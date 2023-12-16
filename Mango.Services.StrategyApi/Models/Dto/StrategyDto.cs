@@ -19,4 +19,3 @@ namespace Mango.Services.StrategyApi.Models.Dto
 
     }
 }
-
