@@ -65,6 +65,7 @@ namespace Mango.Services.StrategyApi.Controllers
 
 
         // GET api/values/GetByName/
+        // имя или код(код в сервисе на фронте)
         [HttpGet]
         [Route("GetByName/{name}")] 
         public ResponseDto GetByName(string name)
@@ -146,4 +147,3 @@ namespace Mango.Services.StrategyApi.Controllers
         }
     }
 }
-
