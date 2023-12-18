@@ -1,7 +1,11 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Mango.Web.Utility;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+SD.StrategyAPIBase = builder.Configuration["ServiceUrls:StrategyAPI"];
 
 var app = builder.Build();
 
