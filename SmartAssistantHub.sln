@@ -40,4 +40,14 @@ Global
 		{8D2F5C93-0D22-4204-BFB8-5A7F8D0F5AB4} = {3C94D149-6F11-4C2E-A683-9E275A141D11}
 		{00115DBF-90FB-43C5-9948-652FD442A633} = {C249E4B4-5732-4201-839C-292A2D097F36}
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.scope = text/x-csharp
+	EndGlobalSection
 EndGlobal
